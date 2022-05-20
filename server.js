@@ -25,11 +25,11 @@ async function CRUD() {
     //     console.log(read);
 
     // // --------------------------------------------------------
-    //       console.log('ESTUDIANTE mas joven');
-    //     let masJoven = await model.alumnosCollections.find(
-    //         {},
-    //         {edad:1,nombre:1, _id:0}).sort({edad:1});
-    //     console.log(masJoven);
+    //   console.log('ESTUDIANTE mas joven');
+    // let masJoven = await model.alumnosCollections.find(
+    //     {},
+    //     {dni:1,edad:1,nombre:1, _id:0}).sort({edad:1});
+    // console.log(masJoven);
     // // --------------------------------------------------------
     //     console.log('ESTUDIANTE del curso 2A');
     //     let dosA = await model.alumnosCollections.find(
@@ -55,23 +55,81 @@ async function CRUD() {
     //     {apellido:1,nombre:1, _id:0});
     // console.log(estudDiez);
     // --------------------------------------------------------
-    console.log("Estudiantes que sacaron 10");
-    let promedio = await model.alumnosCollections
-      .find({}, { nota: 1, _id: 0 })
-      .skip(1);
+    // console.log("Estudiantes que sacaron 10");
+    // let promedio = await model.alumnosCollections
+    //   .find({}, { nota: 1, _id: 0 })
+    //   .skip(1);
 
-    const notas = [];
+    // const notas = [];
 
-    for (let i = 0; i < promedio.length; i++) {
-      notas.push(promedio[i].nota);
-    }
-    console.log(notas);
-    const count = 0;
+    // for (let i = 0; i < promedio.length; i++) {
+    //   notas.push(promedio[i].nota);
+    // }
+    // console.log(notas);
+    // const count = 0;
+    // for (let i = 0; i < notas.length; i++) {
+    //   count = count + notas[i];
+    // }
 
-    for (let i = 0; i < notas.length; i++) {
-      count = count + notas[i];
-    }
-    console.log(notas);
+    // // --------------------------------------------------------
+
+    // console.log('CAMBIAR DNI DE DIEGO');
+    // let updateDNI = await model.alumnosCollections.updateOne(
+    //     {nombre: 'Diego'},
+    //     {$set: {dni: 34703057}});
+    // console.log(updateDNI);
+
+    // // --------------------------------------------------------
+
+    // console.log("Alumnos con notas superiores a 7");
+    //   let nota = await model.alumnosCollections
+    //     .find({}, { nombre: 1, apellido: 1, nota: 1, _id: 0 })
+    //     .skip(1);
+    // let array = [];
+    // nota.forEach((element) => {
+    //   if (element.nota > 7) {
+    //     array.push(element);
+    //   }
+    // });console.log(array);
+    // COMO SE PUEDE HACER PARA UTILIZAR EL ELEMENTO DEVUELTO..en este caso el array??
+
+    // // ------------------------------------------------------
+    // let nota = await model.alumnosCollections
+    //   .find({}, { nombre: 1, apellido: 1, nota: 1, _id: 0 })
+    //   .skip(1);
+    // let array = [];
+    // nota.forEach((element) => {
+    //   array.push(element);
+    // });
+
+    // let acumulador = 0;
+    // let promedio = 0;
+    // for (let index = 0; index < array.length; index++) {
+    //   acumulador += array[index].nota;
+    //   promedio = acumulador / array.length;
+    // }
+    
+    // console.log(`El promedio dado entre todos los alumnos es de ${promedio}`);
+
+
+    // // ------------------------------------------------------
+    // // console.log('AGREGAR UN CAMPO INGRESO');
+    // let ingreso = await model.alumnosCollections.updateMany(
+    //     {"__v" : 0},
+    //     {$set:{ingreso: false}});
+    // console.log(ingreso);
+    // let check = await model.alumnosCollections.find(
+    //   {});
+
+ // // ------------------------------------------------------
+    // console.log('ELIMINAR A ALGUIEN POR ID');
+    // let idEliminado = await model.alumnosCollections.deleteOne(
+    //     {"_id" : "6286df39a613bb6b5b659e11"});
+    //     console.log(idEliminado);
+
+
+
+
   } catch (error) {
     console.log(`Se produjo un error: ${Error}`);
   }

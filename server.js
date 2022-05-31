@@ -1,22 +1,23 @@
-import { CONNREFUSED } from "dns";
-import mongoose from "mongoose";
-import * as model from "./src/models/estudiantes.js";
+const mongoose = require('mongoose');
+const alumnosCollections = require('./src/models/estudiantes');
+// import mongoose from "mongoose";
+// import * as model from "./src/models/estudiantes.js";
 
 CRUD();
 
 async function CRUD() {
   try {
-    const url = "mongodb://localhost:27017/colegio";
+    const url = "mongodb://localhost:27017/ecommerceDB";
     let rta = await mongoose.connect(url, {
       useNewUrlparser: true,
       useUnifiedTopology: true,
     });
     console.log(`base de datos corriendo: ${url}`);
 
-    // console.log('CREATE');
-    // const alumnos =  { nombre: 'Valeria', apellido: 'Ayala', edad: 26, dni: '30423398', curso: '1A', nota: 9 };
-    // const createModel = new model.alumnosCollections(alumnos)
-    // const create = await createModel.save();
+    console.log('CREATE');
+    const alumnos =  { nombre: 'Valeria', apellido: 'Ayala', edad: 26, dni: '30423398', curso: '1A', nota: 9 };
+    const createModel = new model.alumnosCollections(alumnos)
+    const create = await createModel.save();
     // --------------------------------------------------------
     //     console.log('ESTUDIANTES ORDENADOS POR ORDEN ALFABETICO');
     //     let read = await model.alumnosCollections.find(
@@ -25,11 +26,10 @@ async function CRUD() {
     //     console.log(read);
 
     // // --------------------------------------------------------
-    //   console.log('ESTUDIANTE mas joven');
-    // let masJoven = await model.alumnosCollections.find(
-    //     {},
-    //     {dni:1,edad:1,nombre:1, _id:0}).sort({edad:1});
-    // console.log(masJoven);
+      console.log('ESTUDIANTE mas joven');
+    let masJoven = await alumnosCollections.find(
+        {});
+    console.log(masJoven);
     // // --------------------------------------------------------
     //     console.log('ESTUDIANTE del curso 2A');
     //     let dosA = await model.alumnosCollections.find(
@@ -131,6 +131,6 @@ async function CRUD() {
 
 
   } catch (error) {
-    console.log(`Se produjo un error: ${Error}`);
+    console.log(`Se produjo un error: ${error}`);
   }
 }

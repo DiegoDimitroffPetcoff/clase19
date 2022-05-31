@@ -1,5 +1,8 @@
-import mongoose from "mongoose";
-const collection = 'alumnosCollections';
+const mongoose = require('mongoose');
+
+
+
+const collection = 'productos';
 
 const alumnosSchema= new mongoose.Schema({
     nombre: {type:String,require:true,max:100},
@@ -9,5 +12,5 @@ const alumnosSchema= new mongoose.Schema({
     curso:{type:String,require:true,max:100},
     nota:{type:Number,require:true,max:100}
 })
-
-export const alumnosCollections = mongoose.model(collection,alumnosSchema);
+const alumnosCollections = mongoose.model(collection, {});
+module.exports =  alumnosCollections
